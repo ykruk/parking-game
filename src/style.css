@@ -1,0 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+}  
+#app {
+  color: red;
+  background: url('./icon.png');
+}
+#canvas {
+  width: 100vw;
+  height: 100vh;
+}
