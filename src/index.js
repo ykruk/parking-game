@@ -1,31 +1,15 @@
 import _ from 'lodash';
-import printMe from './print.js';
 import './style.css';
-import Icon from './icon.png';
 
-function component() {
-  const element = document.createElement('div');
-  const btn = document.createElement('button');
+//import scripts
+import createMainMenu from './scripts/main-menu.js';
 
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  element.id = 'app';
 
-  // Add the image to our existing div.
-  const myIcon = new Image();
-  myIcon.src = Icon;
-
-  element.appendChild(myIcon);
-
-  btn.innerHTML = 'Click me and check the console!';
-  btn.onclick = printMe;
-
-  element.appendChild(btn);
-
-  return element;
-}
-
-// document.body.appendChild(component());
+const gameSettings = {
+	level: 1,
+	levelScore: 0,
+	totalScore: 0,
+};
 
 function createCanvas() {
   const element = document.createElement('canvas');
@@ -36,3 +20,13 @@ function createCanvas() {
 }
 
 document.body.appendChild(createCanvas());
+
+const canvas = document.getElementById('canvas');
+const canvasWidth = canvas.getBoundingClientRect().width;
+const canvasHeight = canvas.getBoundingClientRect().height;
+
+canvas.width = canvasWidth;
+canvas.height = canvasHeight;
+
+
+createMainMenu(canvasWidth, canvasHeight, gameSettings);

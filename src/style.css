@@ -1,12 +1,11 @@
 * {
   margin: 0;
   padding: 0;
-}  
-#app {
-  color: red;
-  background: url('./icon.png');
+}
+html, body {
+  height: 100%;
 }
 #canvas {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }

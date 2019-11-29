@@ -6,7 +6,9 @@ module.exports = {
   mode: 'development',
   entry: {
     app: './src/index.js',
-    print: './src/print.js',
+  },
+  externals: {
+    "createjs": "createjs",
   },
   devtool: 'inline-source-map',
   devServer: {
@@ -22,6 +24,11 @@ module.exports = {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
+  resolve: {
+    alias: {
+      createjs: 'createjs/builds/1.0.0/createjs.js'
+    }
+  },
   module: {
     rules: [
       {
@@ -36,6 +43,13 @@ module.exports = {
         use: [
           'file-loader',
         ],
+      },
+      {
+        test: /node_modules[/\\]createjs/,
+        loaders: [
+          'imports-loader?this=>window',
+          'exports-loader?window.createjs'
+        ]
       },
     ],
   },
